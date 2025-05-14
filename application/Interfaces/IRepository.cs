@@ -18,4 +18,6 @@ public interface IRepository<TEntity> where TEntity : class, IEntity
 
 	Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
 	Task<IEnumerable<TEntity>> GetAllAsync(Func<TEntity, bool> predicate, CancellationToken cancellationToken = default);
+
+	Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }
