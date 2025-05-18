@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DietApp.Tests.Application;
+﻿namespace DietApp.Tests.Application;
 
 public class FakeRepository<TEntity>(TEntity[]? entities = null) : IRepository<TEntity> where TEntity : class, IEntity
 {
@@ -17,18 +10,14 @@ public class FakeRepository<TEntity>(TEntity[]? entities = null) : IRepository<T
 			var toAdd = entities.Where(x => x.Id is null).ToArray();
 			foreach (var entity in toAdd)
 				entity.Id = new(Guid.NewGuid());
-			// var toUpdate = entities.Except(toAdd); // not needed
 			Db.AddRange(toAdd);
 		}, cancellationToken);
 
 	public Task RemoveRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default) =>
 		Task.Run(() => Db.RemoveAll(x => entities.Contains(x)), cancellationToken);
-	public Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default) =>
-		Task.FromResult<IEnumerable<TEntity>>(Db);
+	public Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default) => Task.FromResult<IEnumerable<TEntity>>(Db);
 
-	public Task<IEnumerable<TEntity>> GetAllAsync(Func<TEntity, bool> predicate, CancellationToken cancellationToken = default) =>
-		Task.FromResult(Db.Where(predicate));
+	public Task<IEnumerable<TEntity>> GetAllAsync(Func<TEntity, bool> predicate, CancellationToken cancellationToken = default) => Task.FromResult(Db.Where(predicate));
 
-	public Task SaveChangesAsync(CancellationToken cancellationToken = default) =>
-		Task.CompletedTask;
+	public Task SaveChangesAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
 }

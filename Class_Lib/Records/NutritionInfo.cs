@@ -1,3 +1,3 @@
 ﻿namespace DietApp.Core.Records;
 
-public record NutritionInfo(double Protein, double Fat, double Carbohydrates, double Calories);
+public record NutritionInfo(double Protein, double Fat, double Carbohydrates);
