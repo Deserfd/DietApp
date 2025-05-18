@@ -1,6 +1,6 @@
 ﻿namespace DietApp.Core.Entities;
 
-public class Recipes : IFood
+public class Recipe : IFood
 {
 	public Id Id { get; set; }  // Используем Guid для уникальности
 	public string Name { get; set; }

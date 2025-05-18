@@ -6,6 +6,7 @@ global using DietApp.Core.Requests;
 global using DietApp.Core.Responses;
 
 global using DietApp.Application.Interfaces;
-global using DietApp.Application.Dishes;
+global using DietApp.Application.FoodDiaryEntrys;
+global using DietApp.Application.Recipes;
 
 global using Microsoft.Extensions.Logging;

@@ -6,6 +6,6 @@ public class FoodDiaryEntry : IEntity
 	public double Quantity { get; set; }  // Количество съеденной пищи
 	public DateTime Date { get; set; }     // Дата приема пищи
 	
-	public virtual Recipes Recipe { get; set; }     // Связь с рецептом
+	public virtual Recipe Recipe { get; set; }     // Связь с рецептом
 	public virtual User User { get; set; }       // Связь с пользователем
 }

@@ -1,4 +1,4 @@
-﻿namespace DietApp.Application.Recipe;
+﻿namespace DietApp.Application.Recipes;
 
 using DietApp.Core.Entities;
 using DietApp.Core.Records;
@@ -11,9 +11,9 @@ using System.Threading;
 using System.Threading.Tasks;
 
 public class AddOrUpdateRecipeCommand(
-	IRepository<Recipes> recipesRepository,
+	IRepository<Recipe> recipesRepository,
 	IRepository<Ingredient> ingredientsRepository,
-	IValidator<Recipes>? recipeValidator = null,
+	IValidator<Recipe>? recipeValidator = null,
 	ILogger<AddOrUpdateRecipeCommand>? logger = null
 ) : ICommand<AddOrUpdateRecipesRequest, BaseResponse>
 {
@@ -27,10 +27,10 @@ public class AddOrUpdateRecipeCommand(
 				request.Name);
 
 			// Подготовка рецепта
-			Recipes potentialRecipe;
+			Recipe potentialRecipe;
 			if (isAdding)
 			{
-				potentialRecipe = new Recipes { Id = new Id(Guid.NewGuid()) };
+				potentialRecipe = new Recipe { Id = new Id(Guid.NewGuid()) };
 			}
 			else
 			{

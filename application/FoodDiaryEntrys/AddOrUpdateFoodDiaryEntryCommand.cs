@@ -1,4 +1,4 @@
-﻿namespace DietApp.Application.Dishes;
+﻿namespace DietApp.Application.FoodDiaryEntrys;
 public class AddOrUpdateFoodDiaryEntryCommand(
 	IRepository<FoodDiaryEntry> foodDiaryEntryRepository,
 	IValidator<FoodDiaryEntry>? diaryValidator = null,
