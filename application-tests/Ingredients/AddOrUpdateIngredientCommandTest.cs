@@ -43,13 +43,13 @@ public class AddOrUpdateIngredientCommandTests
 					{
 						Id = new(Id),
 						Name = "Old Name",
-						NutritionInfo = new NutritionInfo(Protein = 0.5, Fat = 0.1, Carbohydrates = 8.0)
+						NutritionInfo = new NutritionInfo(0.5, 0.1, 8.0)
 					}
 			]);
 		AddOrUpdateIngredientCommand command = new(ingredientRepository);
 		var nutInfo = new NutritionInfo(Protein, Fat, Carbohydrates);
 		AddOrUpdateIngredientReqest addIngredientRequest = new(Id, Name, nutInfo);
-
+		
 		// Act
 		var response = await command.ExecuteAsync(addIngredientRequest);
 		var updatedIngredient = ingredientRepository.Db.Last();
